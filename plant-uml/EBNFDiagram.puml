@@ -1,0 +1,5 @@
+@startebnf
+digit-excluding-zero = "1" | "2" | "3" ;
+digit                = "0" | 1 | next;
+sample03= "0" | "1" | "12";
+@endyaml
