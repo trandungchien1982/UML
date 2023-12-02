@@ -1,0 +1,25 @@
+@startuml
+class ArrayList {
+}
+class LinkedList {
+}
+interface List
+List <|.. ArrayList
+List <|.. LinkedList
+
+interface Collection
+Collection <|-- List
+
+
+class Object{
+}
+ArrayList o- Object
+
+class Node{
+}
+LinkedList *-- Node
+
+class ListIterator
+ListIterator <... ArrayList : create
+ListIterator <... LinkedList : create
+@enduml
