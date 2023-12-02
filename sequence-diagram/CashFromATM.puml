@@ -1,30 +1,3 @@
-# UML
-Series về học UML/ Demo các lược đồ thực tế<br/>
-Mỗi nhánh trong Repo sẽ là 1 ví dụ/ giải pháp/ project mẫu trong UML
-
-# Tools sử dụng
-- DrawIO online trên https://app.diagrams.net/
-- PlantUML online trên https://plantuml.com/
-- PlantUML được cài đặt ở Local & tích hợp vào Visual Studio Code/ Intellij IDEA
-
-# Folder liên quan trên Windows
-```
-D:\Projects\UML
-```
-
-==============================================================
-
-# Ví dụ [03.SequenceDiagram]
-==============================================================
-
-(Tìm hiều về Sequence Diagram)
-
-## Tham khảo
-- https://codelearn.io/sharing/sequence-diagram-trong-uml
-- https://viblo.asia/p/thiet-ke-sequence-diagram-su-dung-plantuml-924lJB9YlPM
-
-## Ví dụ về Sequence Diagram về việc rút tiền tại cây ATM
-```shell
 @startuml 
 actor User as user 
 boundary "Cây ATM" as atm_machine 
@@ -80,5 +53,3 @@ deactivate user
 deactivate atm_machine 
  
 @enduml
-```
-![CashFromATM Sequence Diagram](./sequence-diagram/resources/CashFromATM-1.png "CashFromATM")
