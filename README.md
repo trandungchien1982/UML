@@ -14,92 +14,127 @@ D:\Projects\UML
 
 ==============================================================
 
-# Ví dụ [04.ClassDiagram]
+# Ví dụ [05.ActivityDiagram]
 ==============================================================
 
-(Tìm hiều về Class Diagram)
+(Tìm hiểu về Activity Diagram)
 
 ## Tham khảo
-- https://viblo.asia/p/tim-hieu-ve-cach-thiet-ke-class-diagram-L4x5xLyY5BM
-- https://iviettech.vn/blog/813-classs-diagarm-ban-ve-ve-classlop.html
-- https://codegym.vn/blog/2022/02/17/cach-doc-uml-class-diagram/
-- https://www.mindonmap.com/vi/blog/what-is-uml-class-diagram/
-- https://codelearn.io/sharing/huong-dan-ve-bieu-do-lop-trong-uml
-- https://codegym.cc/vi/groups/posts/vi.157.so-o-lop-uml
-- https://plantuml.com/class-diagram
+- https://www.bacs.vn/vi/blog/kien-thuc/gioi-thieu-ve-activity-diagram-20879.html
+- https://youtu.be/QRar3e5Hiow?si=dH_vRFHfBdmOri72
+- https://monhoc.weebly.com/uploads/1/6/9/3/16936172/lab04.pdf
+- https://viblo.asia/p/activity-diagram-using-plant-uml-924lJAeNZPM
+- https://iviettech.vn/blog/1066-activity-diagram-ban-ve-hoat-dong.html
 
-## Ví dụ Class Diagram về Collection Framework (rút gọn)
+## Ví dụ về 1 số mẫu trong Activity Diagram, hiện thực hóa bằng PlantUML
 ```shell
 @startuml
-class ArrayList {
-}
-class LinkedList {
-}
-interface List
-List <|.. ArrayList
-List <|.. LinkedList
+skinparam dpi 200
 
-interface Collection
-Collection <|-- List
+' Hello World sample
+start
+:Hello world;
+:Hello VietNam **lines**;
+stop
 
 
-class Object{
-}
-ArrayList o- Object
+' The if..else condition
+start
+if (Plant Uml installed?) then (yes)
+  :process all\ndiagrams;
+else (no)
+  :process only
+  __sequence__ and __activity__ diagrams;
+endif
+stop
 
-class Node{
-}
-LinkedList *-- Node
+' Another if..elseif
+start
+if (condition A) then (yes)
+  :Text 1;
+elseif (condition B) then (yes)
+  :Text 2;
+  stop
+elseif (condition C) then (yes)
+  :Text 3;
+elseif (condition D) then (yes)
+  :Text 4;
+else (nothing)
+  :Text else;
+endif
+stop
 
-class ListIterator
-ListIterator <... ArrayList : create
-ListIterator <... LinkedList : create
-@enduml
+' The while loop
+start
+while (data available?)
+  :read data;
+  :generate diagrams;
+endwhile
+stop
 
-```
-![Sample Class Diagram](./class-diagram/resources/SampleClassDiagram.png "Sample Class Diagram")
+' Using nodes
+start
+:foo1;
+floating note left: This is a note
+:foo2;
+note right
+  This note is on several
+  //lines// and can
+  contain <b>HTML</b>
+  ====
+  * Calling the method ""foo()"" is prohibited
+end note
+stop
 
-
-## Ví dụ Class Diagram về University (rút gọn)
-```shell
-@startuml
-class Person {
-    +Object[] elementData
-    +drink()
-    #says()
-    talk(String topic)
-    go(String placeName)
-    -internalCall(long hours)
-    -validate(String fingerPrint, double time)
-}
-
-class Teacher {
-    +doTeaching(int hours)
-}
-class Student {
-    +makeDiscussion(Float timeVal)
-    #connectWithOtherStudent(int millis)
-    -doStuffs()
-    -shave()
-}
-Person <|-- Teacher
-Person <|-- Student
-
-interface Discussion {
-    +speak()
-    +interrupt()
-}
-
-
-class GoodStudent implements Discussion{
-    +shareKnowledge()
-}
-class BadStudent implements Discussion{
-    +destroyFurniture()
-}
-Student <|-- GoodStudent
-Student <|-- BadStudent
+' Using Connector
+start
+:Some activity;
+(A)
+detach
+(A)
+:Other activity;
+stop
 
 @enduml
 ```
-![University Class Diagram](./class-diagram/resources/UniversityClassDiagram.png "University Class Diagram")
+![Sample Activity Diagram](activity-diagram/resources/SampleActivityDiagram.png "Sample Activity Diagram")
+
+
+## Ví dụ Activity Diagram về rút tiền ở cây ATM (rút gọn) 
+```shell
+@startuml
+skinparam dpi 200
+
+start
+:Insert Card;
+:Enter PIN;
+:Authorise;
+if (Valid PIN?) then (yes)
+  :Enter Amount;
+  :Check Account Balance;
+  if (Balance >= Amount?) then (yes)
+    :Subtract the money;
+    :Take the Money from Slot;
+    :Show the Balance;
+    :call RejectCard>
+
+  else (no)
+    :Notice that you don't have enough money';
+    :call RejectCard>
+  endif
+else (no)
+  :call RejectCard>
+  stop
+endif
+
+stop
+
+partition RejectCard {
+  :Reject CARD;
+  :Take CARD;
+}
+
+@enduml
+```
+![ATM Activity Diagram](activity-diagram/resources/ATMActivityDiagram.png "ATM Activity Diagram")
+

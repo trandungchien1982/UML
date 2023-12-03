@@ -1,0 +1,33 @@
+@startuml
+skinparam dpi 200
+
+start
+:Insert Card;
+:Enter PIN;
+:Authorise;
+if (Valid PIN?) then (yes)
+  :Enter Amount;
+  :Check Account Balance;
+  if (Balance >= Amount?) then (yes)
+    :Subtract the money;
+    :Take the Money from Slot;
+    :Show the Balance;
+    :call RejectCard>
+
+  else (no)
+    :Notice that you don't have enough money';
+    :call RejectCard>
+  endif
+else (no)
+  :call RejectCard>
+  stop
+endif
+
+stop
+
+partition RejectCard {
+  :Reject CARD;
+  :Take CARD;
+}
+
+@enduml
