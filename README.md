@@ -14,22 +14,60 @@ D:\Projects\UML
 
 ==============================================================
 
-# Ví dụ [05.ActivityDiagram]
+# Ví dụ [06.ERDiagram]
 ==============================================================
 
-(Tìm hiều về Activity Diagram)
+(Tìm hiểu về Entity Relationship Diagram)
 
 ## Tham khảo
-- https://www.bacs.vn/vi/blog/kien-thuc/gioi-thieu-ve-activity-diagram-20879.html
-- https://youtu.be/QRar3e5Hiow?si=dH_vRFHfBdmOri72
-- https://monhoc.weebly.com/uploads/1/6/9/3/16936172/lab04.pdf
-- https://viblo.asia/p/activity-diagram-using-plant-uml-924lJAeNZPM
-- https://iviettech.vn/blog/1066-activity-diagram-ban-ve-hoat-dong.html
+- https://viblo.asia/p/mo-hinh-quan-he-thuc-the-entity-relationship-model-oOVlYEenl8W
+- https://viblo.asia/p/hieu-va-phan-biet-3-loai-erd-notation-thuong-gap-6J3ZgpPBlmB
+- https://viblo.asia/p/tao-er-diagram-cua-mot-database-bang-mysql-workbench-OeVKBqvy5kW
+- https://youtu.be/KmqOajhoqAg?si=ggB8DA6wjOwKmXmw
+- https://cole.edu.vn/entity-relationship-diagram-erd/
+- https://plantuml.com/ie-diagram
 
-## Ví dụ Activity Diagram về ... 
+## Một số ví dụ Entity Relationship Diagram xây dựng trên PlantUML
 ```shell
+@startuml
+' hide the spot
+' hide circle
 
+' avoid problems with angled crows feet
+skinparam linetype ortho
 
+entity "Entity01" as e01 {
+  *e1_id : number <<generated>>
+  --
+  *name : text
+  description : text
+}
+
+entity "Entity02" as e02 {
+  *e2_id : number <<generated>>
+  --
+  *e1_id : number <<FK>>
+  other_details : text
+}
+
+entity "Entity03" as e03 {
+  *e3_id : number <<generated>>
+  --
+  e1_id : number <<FK>>
+  other_details : text
+}
+
+entity "Entity04" as e04 {
+  *e4_id : number <<generated>>
+  --
+  e1_id : number <<FK>>
+  other_details : text
+}
+
+e01 ||..o{ e02
+e01 |o..o{ e03
+e01 |o..o{ e04
+@enduml
 ```
-![Sample Class Diagram](activity-diagram/resources/SampleClassDiagram.png "Sample Class Diagram")
+![Sample ER Diagram](ER-diagram/resources/SampleERDiagram.png "Sample ER Diagram")
 
