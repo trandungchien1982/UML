@@ -1,0 +1,93 @@
+
+' UseCase Diagram 01
+@startuml
+:User: --> (Use)
+"Main Admin" as Admin
+"Use the application" as (Use)
+Admin --> (Admin the application)
+@enduml
+
+
+' UseCase Diagram 02
+@startuml
+left to right direction
+actor Guest as g
+package Professional {
+  actor Chef as c
+  actor "Food Critic" as fc
+}
+package Restaurant {
+  usecase "Eat Food" as UC1
+  usecase "Pay for Food" as UC2
+  usecase "Drink" as UC3
+  usecase "Review" as UC4
+}
+fc --> UC4
+g --> UC1
+g --> UC2
+g --> UC3
+@enduml
+
+
+' UseCase Diagram 03
+@startuml
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User -> (Start)
+User --> (Use)
+
+Admin ---> (Use)
+
+note right of Admin : This is an example.
+
+note right of (Use)
+  A note can also
+  be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)
+@enduml
+
+
+' UseCase Diagram 04
+@startuml
+skinparam handwritten true
+
+skinparam usecase {
+BackgroundColor DarkSeaGreen
+BorderColor DarkSlateGray
+
+BackgroundColor<< Main >> YellowGreen
+BorderColor<< Main >> YellowGreen
+
+ArrowColor Olive
+ActorBorderColor black
+ActorFontName Courier
+
+ActorBackgroundColor<< Human >> Gold
+}
+
+User << Human >>
+:Main Database: as MySql << Application >>
+(Start) << One Shot >>
+(Use the application) as (Use) << Main >>
+
+User -> (Start)
+User --> (Use)
+
+MySql --> (Use)
+@enduml
+
+
+' UseCase Diagram 05
+@startuml
+actor foo
+foo --> (bar) : normal
+foo --> (bar1) #line:red;line.bold;text:red  : red bold
+foo --> (bar2) #green;line.dashed;text:green : green dashed
+foo --> (bar3) #blue;line.dotted;text:blue   : blue dotted
+@enduml
