@@ -64,7 +64,6 @@ g --> UC3
 - UseCase Diagram 03
 ```shell
 @startuml
-@startuml
 :Main Admin: as Admin
 (Use the application) as (Use)
 
